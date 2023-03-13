@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EPF</string>
+    <string name="app_name">KWSP</string>
+    <string name="action_settings">Tetapan</string>
+    <string name="menu_home">Rumah</string>
+    <string name="menu_dividend">Dividen</string>
+    <string name="menu_investment">Pelaburan</string>
+    <string name="logo">Logo KWSP</string>
+    <string name="dob">Tarikh Lahir</string>
 </resources>
