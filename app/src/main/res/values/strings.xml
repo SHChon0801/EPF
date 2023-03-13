@@ -34,4 +34,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="locate_us">LOCATE US</string>
     <string name="copy_right">Copy Right © 2023</string>
+    <string name="action_about">About</string>
 </resources>
