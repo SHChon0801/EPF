@@ -49,4 +49,5 @@
     <string name="email">Email</string>
     <string name="save">Save</string>
     <string name="profile_save">Profile Saved</string>
+    <string name="value_required">Value Required</string>
 </resources>

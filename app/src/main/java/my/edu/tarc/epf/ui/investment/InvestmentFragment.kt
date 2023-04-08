@@ -14,6 +14,7 @@ import my.edu.tarc.epf.R
 import my.edu.tarc.epf.databinding.FragmentInvestmentBinding
 import java.util.Calendar
 import java.util.Calendar.*
+import kotlin.math.pow
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +35,8 @@ class InvestmentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.textViewAge.text = "0"
+        binding.textViewAmountInvestment.text = "0"
         binding.buttonDOB.setOnClickListener {
             val dateDialogFragment = DateDialogFragment {
                 year, month, day -> onDateSelected(year, month, day)
@@ -42,10 +45,50 @@ class InvestmentFragment : Fragment() {
 
         }
         binding.buttonCalculate.setOnClickListener {
+            if (binding.editTextBalanceAccount1.text.isEmpty()){
+                binding.editTextBalanceAccount1.error = getString(R.string.value_required)
+                return@setOnClickListener //terminate the program
+            }
+            var minBasicSaving = 0
+            when (binding.textViewAge.text.toString().toFloat()) {
+                in 16.0..20.0 -> {
+                    minBasicSaving = 5000
+                }
+                in 21.0..25.0 -> {
+                    minBasicSaving = 14000
+                }
+                in 26.0..30.0 -> {
+                    minBasicSaving = 29000
+                }
+                in 31.0..35.0 -> {
+                    minBasicSaving = 50000
+                }
+                in 36.0..40.0 -> {
+                    minBasicSaving = 78000
+                }
+                in 41.0..45.0 -> {
+                    minBasicSaving = 116000
+                }
+                in 46.0..50.0 -> {
+                    minBasicSaving = 165000
+                }
+                in 51.0..55.0 -> {
+                    minBasicSaving = 228000
+                }
+                else -> {
+                    minBasicSaving = 0
+                }
+            }
+            var excessOfBasic = binding.editTextBalanceAccount1.text.toString().toFloat() - minBasicSaving
+            var amountOfInvestment = excessOfBasic * 0.3
+            binding.textViewAmountInvestment.text = amountOfInvestment.toString()
 
         }
         binding.buttonReset.setOnClickListener {
-
+            binding.editTextBalanceAccount1.setText("")
+            binding.buttonDOB.text = getString(R.string.dob)
+            binding.textViewAge.text = "0"
+            binding.textViewAmountInvestment.text = "0"
         }
     }
 
